@@ -1,4 +1,4 @@
-class Alpha implements Runnable
+class Alpha extends Thread
 {
 public void run()
 {
@@ -15,7 +15,7 @@ System.out.println("Thread Alpha is interrupted");
 }
 }
 }
-class Beta implements Runnable{
+class Beta extends Thread{
 public void run()
 {
 try{
@@ -37,10 +37,8 @@ public static void main(String args[])
 {
 Alpha a=new Alpha();
 Beta b=new Beta();
-Thread t1=new Thread(a);
-Thread t2=new Thread(b);
-t1.start();
-t2.start();
+a.start();
+b.start();
 }
 }
 
