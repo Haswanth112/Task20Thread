@@ -1,19 +1,22 @@
 class Thread1 extends Thread{
-    @Override
+    private String message;
+
+    public Thread1(String message){
+        this.message=message;
+    }
     public void run() {
-        System.out.println("This is Thread 1");
+        System.out.println("This is Thread 1: "+message);
 
     }
 }
 class Thread2 extends Thread{
-    @Override
     public void run() {
         System.out.println("This is Thread 2");
     }
 }
 public class ThreadCheck {
     public static void main(String[] args) {
-        Thread1 t1=new Thread1();
+        Thread1 t1=new Thread1(" hello ");
         Thread2 t2=new Thread2();
         t1.start();
         t2.start();
