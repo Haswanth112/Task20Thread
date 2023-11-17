@@ -24,7 +24,7 @@ class MyThread1 extends Thread {
         while ((word = SharedResource.getNextWord()) != null) {
             System.out.println(Thread.currentThread().getName() + ": " + word);
             try {
-                Thread.sleep(100); // Simulating some processing time
+                Thread.sleep(100); 
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
