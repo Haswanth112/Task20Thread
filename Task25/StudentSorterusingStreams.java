@@ -40,6 +40,6 @@ public class StudentSorter {
                         .thenComparing(Student::getFirstName)
                         .thenComparing(Student::getId))
                 .collect(Collectors.toList());
-        students.forEach(h->System.out.println(h.firstName));
+        students.forEach(h->System.out.println(h.firstName+"\t"+h.id));
     }
 }
