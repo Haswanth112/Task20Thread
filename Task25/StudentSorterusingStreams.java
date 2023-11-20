@@ -1,45 +1,20 @@
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
-class Student {
-    String id;
-    String firstName;
-    double cgpa;
-
-    public Student(String id, String firstName, double cgpa) {
-        this.id = id;
-        this.firstName = firstName;
-        this.cgpa = cgpa;
-    }
-
-    public double getCgpa() {
-        return cgpa;
-    }
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getId() {
-        return id;
-    }
-}
-public class StudentSorter {
+public class LeapYearUsingStreams {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the number of students: ");
-        int n = scanner.nextInt();
-        scanner.nextLine();
-        List<Student> students = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            String[] info = scanner.nextLine().split(" ");
-            students.add(new Student(info[0], info[1], Double.parseDouble(info[2])));
-        }
-        students = students.stream()
-                .sorted(Comparator
-                        .comparing(Student::getCgpa).reversed()
-                        .thenComparing(Student::getFirstName)
-                        .thenComparing(Student::getId))
-                .collect(Collectors.toList());
-        students.forEach(h->System.out.println(h.firstName+"\t"+h.id));
+        List<Integer> list=new ArrayList<>();
+        Scanner s =new Scanner(System.in);
+        System.out.println("Enter the Years Separated by comma :");
+        String[] b=s.nextLine().split(",");
+        Arrays.stream(b).forEach(n->{list.add(Integer.parseInt(n));});
+        list.stream().
+                filter(a->a%4==0 && a%100!=0 || (a%100==0 && a%400==0)).
+                distinct().
+                forEach(System.out::println);
     }
 }
+
+
