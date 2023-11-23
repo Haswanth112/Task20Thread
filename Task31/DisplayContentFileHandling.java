@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class DisplayContent {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         File file=new File("F:\\Testfiles123.txt");
         try {
             file.createNewFile();
@@ -25,12 +25,14 @@ public class DisplayContent {
         System.out.println("Enter a Message :");
         String st= sc.nextLine();
         sc.close();
+        FileWriter wrtr=new FileWriter(file);
         try {
-            FileWriter wrtr=new FileWriter(file);
+            
             wrtr.write(st);
-            wrtr.close();
 
         } catch (IOException e) {
+            wrtr.close();
+            
             throw new RuntimeException(e);
         }
 
